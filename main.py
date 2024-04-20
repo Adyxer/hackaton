@@ -1,21 +1,16 @@
 import sys
 
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtWidgets import QMainWindow, QApplication
+from new import Ui_MainWindow
+
 class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
+        super(MainWindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
-        self.setWindowTitle("My App")
-
-        button = QPushButton("Press Me!")
-
-        self.setFixedSize(QSize(400, 300))
-
-        self.p
-app = QApplication(sys.argv)
-
-window = MainWindow()
-window.show()
-
-app.exec()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
