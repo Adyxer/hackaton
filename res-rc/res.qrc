@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="image">
+    <file>user_icon.png</file>
+    <file>logo.png</file>
+    <file>photo_2024-04-20_13-17-35 (1).png</file>
+  </qresource>
+</RCC>
