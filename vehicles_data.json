@@ -1,605 +1,590 @@
 {
-    "user_location": "59.9386,30.3141",
+    "user_location": "59.97244155,30.323441124682816",
     "vehicles": {
         "result": [
             {
-                "timestamp": "2024-04-21 12:47:00",
+                "timestamp": "2024-04-21 14:18:21",
                 "position": {
-                    "lon": 30.296195023483424,
-                    "lat": 59.938521953733506
+                    "lon": 30.333005194969974,
+                    "lat": 59.98352548620175
                 },
-                "direction": 61,
-                "routeId": "229",
-                "vehicleLabel": "1978",
-                "velocity": 41,
-                "vehicleId": 31370,
-                "orderNumber": 6,
-                "licensePlate": "С647ТС198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:58",
-                "position": {
-                    "lon": 30.305887892869674,
-                    "lat": 59.95153296430252
-                },
-                "direction": 354,
-                "routeId": "1122",
-                "vehicleLabel": "3022",
-                "velocity": 12,
-                "vehicleId": 3915,
-                "orderNumber": 4,
-                "licensePlate": "3022",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:59",
-                "position": {
-                    "lon": 30.299901049411325,
-                    "lat": 59.93396134397208
-                },
-                "direction": 239,
-                "routeId": "1329",
-                "vehicleLabel": "7659",
-                "velocity": 34,
-                "vehicleId": 15944,
-                "orderNumber": 7,
-                "licensePlate": "А196ТВ198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:47:01",
-                "position": {
-                    "lon": 30.305646674241043,
-                    "lat": 59.941817262775025
-                },
-                "direction": 43,
-                "routeId": "1062",
-                "vehicleLabel": "2339",
-                "velocity": 8,
-                "vehicleId": 7987,
-                "orderNumber": 3,
-                "licensePlate": "2339",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:00",
-                "position": {
-                    "lon": 30.3059299,
-                    "lat": 59.93342040000002
-                },
-                "direction": 248,
-                "routeId": "1338",
-                "vehicleLabel": "5507",
-                "velocity": 22,
-                "vehicleId": 30914,
-                "orderNumber": 2,
-                "licensePlate": "С005УО198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:01",
-                "position": {
-                    "lon": 30.323318187912538,
-                    "lat": 59.95347484031669
-                },
-                "direction": 155,
-                "routeId": "1675",
-                "vehicleLabel": "6268",
-                "velocity": 10,
-                "vehicleId": 22900,
-                "orderNumber": 2,
-                "licensePlate": "Р094ВА198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:47:00",
-                "position": {
-                    "lon": 30.32933042197223,
-                    "lat": 59.93504850751344
-                },
-                "direction": 284,
-                "routeId": "230",
-                "vehicleLabel": "6703",
-                "velocity": 3,
-                "vehicleId": 16155,
-                "orderNumber": 5,
-                "licensePlate": "У331ХВ178",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:59",
-                "position": {
-                    "lon": 30.317206599999995,
-                    "lat": 59.931741800000005
-                },
-                "direction": 323,
-                "routeId": "1076",
-                "vehicleLabel": "1014",
-                "velocity": 12,
-                "vehicleId": 15163,
-                "orderNumber": 2,
-                "licensePlate": "1014",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:57",
-                "position": {
-                    "lon": 30.32906200186058,
-                    "lat": 59.93495990580485
-                },
-                "direction": 104,
-                "routeId": "225",
-                "vehicleLabel": "7407",
-                "velocity": 9,
-                "vehicleId": 31047,
+                "direction": 48,
+                "routeId": "2133",
+                "vehicleLabel": "6329",
+                "velocity": 13,
+                "vehicleId": 22334,
                 "orderNumber": 1,
-                "licensePlate": "Н201КК198",
+                "licensePlate": "Р158НЕ198",
                 "directionId": 1
             },
             {
-                "timestamp": "2024-04-21 12:46:30",
+                "timestamp": "2024-04-21 14:18:05",
                 "position": {
-                    "lon": 30.3124289,
-                    "lat": 59.9370159
+                    "lon": 30.307283568728042,
+                    "lat": 59.97025692921193
                 },
-                "direction": 133,
-                "routeId": "1065",
-                "vehicleLabel": "3233",
-                "velocity": 8,
-                "vehicleId": 19840,
-                "orderNumber": 3,
-                "licensePlate": "3233",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:00",
-                "position": {
-                    "lon": 30.31759020918054,
-                    "lat": 59.92315023397649
-                },
-                "direction": 178,
-                "routeId": "1258",
-                "vehicleLabel": "6887",
-                "velocity": 41,
-                "vehicleId": 25409,
-                "orderNumber": 2,
-                "licensePlate": "Р616СЕ198",
+                "direction": 158,
+                "routeId": "1740",
+                "vehicleLabel": "1502",
+                "velocity": 0,
+                "vehicleId": 798,
+                "orderNumber": 1,
+                "licensePlate": "Р538НЕ123",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:56",
+                "timestamp": "2024-04-21 14:18:16",
                 "position": {
-                    "lon": 30.296398547441466,
-                    "lat": 59.95055252054625
+                    "lon": 30.314523705091876,
+                    "lat": 59.971377139162854
                 },
-                "direction": 121,
-                "routeId": "1105",
-                "vehicleLabel": "3081",
+                "direction": 199,
+                "routeId": "1087",
+                "vehicleLabel": "5109",
                 "velocity": 16,
-                "vehicleId": 3940,
-                "orderNumber": 2,
-                "licensePlate": "3081",
+                "vehicleId": 26708,
+                "orderNumber": 8,
+                "licensePlate": "5109",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:58",
+                "timestamp": "2024-04-21 14:18:17",
                 "position": {
-                    "lon": 30.296570978514254,
-                    "lat": 59.93862847169817
+                    "lon": 30.316273923283088,
+                    "lat": 59.973894512511315
                 },
-                "direction": 61,
-                "routeId": "1070",
-                "vehicleLabel": "3204",
-                "velocity": 47,
-                "vehicleId": 18397,
-                "orderNumber": 11,
-                "licensePlate": "3204",
+                "direction": 199,
+                "routeId": "7373",
+                "vehicleLabel": "36922",
+                "velocity": 11,
+                "vehicleId": 23371,
+                "orderNumber": 1,
+                "licensePlate": "М964ОЕ198",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:58",
+                "timestamp": "2024-04-21 14:18:18",
                 "position": {
-                    "lon": 30.324312295117743,
-                    "lat": 59.935666678673336
+                    "lon": 30.336743011566575,
+                    "lat": 59.984626442813266
                 },
-                "direction": 284,
-                "routeId": "1070",
-                "vehicleLabel": "3262",
+                "direction": 259,
+                "routeId": "226",
+                "vehicleLabel": "6948",
+                "velocity": 0,
+                "vehicleId": 31517,
+                "orderNumber": 8,
+                "licensePlate": "С577УУ198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.33706287685547,
+                    "lat": 59.957960996627634
+                },
+                "direction": 86,
+                "routeId": "1105",
+                "vehicleLabel": "3707",
+                "velocity": 14,
+                "vehicleId": 11383,
+                "orderNumber": 7,
+                "licensePlate": "3707",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:21",
+                "position": {
+                    "lon": 30.3269655,
+                    "lat": 59.980854799999975
+                },
+                "direction": 48,
+                "routeId": "7373",
+                "vehicleLabel": "35868",
+                "velocity": 44,
+                "vehicleId": 24559,
+                "orderNumber": 6,
+                "licensePlate": "М115РУ198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.316511701730843,
+                    "lat": 59.97423534846237
+                },
+                "direction": 199,
+                "routeId": "1087",
+                "vehicleLabel": "6862",
                 "velocity": 8,
-                "vehicleId": 26362,
-                "orderNumber": 9,
-                "licensePlate": "3262",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:41",
-                "position": {
-                    "lon": 30.32491692241011,
-                    "lat": 59.935592229474004
-                },
-                "direction": 284,
-                "routeId": "1065",
-                "vehicleLabel": "3285",
-                "velocity": 13,
-                "vehicleId": 27491,
+                "vehicleId": 9251,
                 "orderNumber": 6,
-                "licensePlate": "3285",
+                "licensePlate": "6862",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:47:00",
+                "timestamp": "2024-04-21 14:18:19",
                 "position": {
-                    "lon": 30.31433331500012,
-                    "lat": 59.93619758403422
+                    "lon": 30.3080427,
+                    "lat": 59.96764760000001
                 },
-                "direction": 233,
-                "routeId": "225",
-                "vehicleLabel": "7225",
-                "velocity": 23,
-                "vehicleId": 31043,
-                "orderNumber": 10,
-                "licensePlate": "Н292КК198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:36",
-                "position": {
-                    "lon": 30.33047621185262,
-                    "lat": 59.95635424774816
-                },
-                "direction": 47,
-                "routeId": "1105",
-                "vehicleLabel": "3710",
-                "velocity": 13,
-                "vehicleId": 11386,
-                "orderNumber": 9,
-                "licensePlate": "3710",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:57",
-                "position": {
-                    "lon": 30.301448394335964,
-                    "lat": 59.94094269517905
-                },
-                "direction": 330,
-                "routeId": "1566",
-                "vehicleLabel": "6815",
-                "velocity": 0,
-                "vehicleId": 30644,
+                "direction": 89,
+                "routeId": "1673",
+                "vehicleLabel": "35648",
+                "velocity": 21,
+                "vehicleId": 13879,
                 "orderNumber": 1,
-                "licensePlate": "Р956НУ198",
+                "licensePlate": "М898НР198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.337429901378364,
+                    "lat": 59.97914970929121
+                },
+                "direction": 168,
+                "routeId": "332",
+                "vehicleLabel": "2215",
+                "velocity": 14,
+                "vehicleId": 2388,
+                "orderNumber": 11,
+                "licensePlate": "Х580РО178",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:54",
+                "timestamp": "2024-04-21 14:18:03",
                 "position": {
-                    "lon": 30.315109342156337,
-                    "lat": 59.9367563858617
+                    "lon": 30.308867799978024,
+                    "lat": 59.96199992453152
                 },
-                "direction": 283,
-                "routeId": "1062",
-                "vehicleLabel": "5009",
-                "velocity": 17,
-                "vehicleId": 26229,
-                "orderNumber": 8,
-                "licensePlate": "5009",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:52",
-                "position": {
-                    "lon": 30.32478560623573,
-                    "lat": 59.93560840207276
-                },
-                "direction": 284,
-                "routeId": "1080",
-                "vehicleLabel": "3250",
-                "velocity": 2,
-                "vehicleId": 26165,
-                "orderNumber": 5,
-                "licensePlate": "3250",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:43:57",
-                "position": {
-                    "lon": 30.312900023414716,
-                    "lat": 59.9370158997817
-                },
-                "direction": 283,
-                "routeId": "1072",
-                "vehicleLabel": "2353",
-                "velocity": 0,
-                "vehicleId": 27847,
-                "orderNumber": 10,
-                "licensePlate": "2353",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:59",
-                "position": {
-                    "lon": 30.317085993081665,
-                    "lat": 59.93644182447257
-                },
-                "direction": 103,
-                "routeId": "1699",
-                "vehicleLabel": "6121",
-                "velocity": 13,
-                "vehicleId": 22956,
-                "orderNumber": 17,
-                "licensePlate": "О870ХТ198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:01",
-                "position": {
-                    "lon": 30.296150926638756,
-                    "lat": 59.92904588479367
-                },
-                "direction": 46,
-                "routeId": "230",
-                "vehicleLabel": "6917",
-                "velocity": 39,
-                "vehicleId": 31342,
-                "orderNumber": 6,
-                "licensePlate": "С667ТА198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:53",
-                "position": {
-                    "lon": 30.3065196,
-                    "lat": 59.9501392
-                },
-                "direction": 162,
-                "routeId": "1105",
-                "vehicleLabel": "3708",
-                "velocity": 17,
-                "vehicleId": 11384,
-                "orderNumber": 6,
-                "licensePlate": "3708",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:01",
-                "position": {
-                    "lon": 30.310705830985388,
-                    "lat": 59.93488323967405
-                },
-                "direction": 235,
-                "routeId": "1064",
-                "vehicleLabel": "2356",
-                "velocity": 0,
-                "vehicleId": 27850,
-                "orderNumber": 1,
-                "licensePlate": "2356",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:56",
-                "position": {
-                    "lon": 30.313598982160144,
-                    "lat": 59.93693381596124
-                },
-                "direction": 283,
-                "routeId": "1699",
-                "vehicleLabel": "6318",
-                "velocity": 18,
-                "vehicleId": 22384,
-                "orderNumber": 12,
-                "licensePlate": "Р984ОМ198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:58",
-                "position": {
-                    "lon": 30.31772087168651,
-                    "lat": 59.923914916705904
-                },
-                "direction": 358,
-                "routeId": "1255",
-                "vehicleLabel": "1209",
-                "velocity": 32,
-                "vehicleId": 18333,
-                "orderNumber": 9,
-                "licensePlate": "Е454ХТ198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:58",
-                "position": {
-                    "lon": 30.30794777766505,
-                    "lat": 59.92197195075835
-                },
-                "direction": 181,
-                "routeId": "1669",
-                "vehicleLabel": "35639",
-                "velocity": 30,
-                "vehicleId": 23651,
-                "orderNumber": 1,
-                "licensePlate": "М767НР198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:58",
-                "position": {
-                    "lon": 30.297501138513194,
-                    "lat": 59.95186506105564
-                },
-                "direction": 31,
-                "routeId": "1669",
-                "vehicleLabel": "35609",
-                "velocity": 0,
-                "vehicleId": 13866,
-                "orderNumber": 2,
-                "licensePlate": "М433НР198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:58",
-                "position": {
-                    "lon": 30.323015434746868,
-                    "lat": 59.92897482673236
-                },
-                "direction": 230,
-                "routeId": "1689",
-                "vehicleLabel": "6630",
-                "velocity": 0,
-                "vehicleId": 30707,
-                "orderNumber": 6,
-                "licensePlate": "К155ОН198",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:46:57",
-                "position": {
-                    "lon": 30.309190188817553,
-                    "lat": 59.93251467718279
-                },
-                "direction": 337,
-                "routeId": "1669",
-                "vehicleLabel": "35603",
-                "velocity": 1,
-                "vehicleId": 13860,
-                "orderNumber": 7,
-                "licensePlate": "М355НР198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:38",
-                "position": {
-                    "lon": 30.30706953706005,
-                    "lat": 59.92242332183384
-                },
-                "direction": 66,
-                "routeId": "1255",
-                "vehicleLabel": "1517",
-                "velocity": 18,
-                "vehicleId": 12598,
-                "orderNumber": 7,
-                "licensePlate": "У994ХТ178",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:47:00",
-                "position": {
-                    "lon": 30.311344314030826,
-                    "lat": 59.924072374308395
-                },
-                "direction": 50,
-                "routeId": "1689",
-                "vehicleLabel": "6204",
-                "velocity": 4,
-                "vehicleId": 31327,
-                "orderNumber": 5,
-                "licensePlate": "С641ТА198",
-                "directionId": 1
-            },
-            {
-                "timestamp": "2024-04-21 12:46:56",
-                "position": {
-                    "lon": 30.296402058087526,
-                    "lat": 59.93241935452591
-                },
-                "direction": 59,
-                "routeId": "1064",
-                "vehicleLabel": "2451",
-                "velocity": 0,
-                "vehicleId": 17637,
-                "orderNumber": 6,
-                "licensePlate": "2451",
-                "directionId": 0
-            },
-            {
-                "timestamp": "2024-04-21 12:47:01",
-                "position": {
-                    "lon": 30.314060780650443,
-                    "lat": 59.936796556848016
-                },
-                "direction": 103,
-                "routeId": "1076",
-                "vehicleLabel": "1002",
+                "direction": 39,
+                "routeId": "1087",
+                "vehicleLabel": "6303",
                 "velocity": 9,
-                "vehicleId": 15124,
-                "orderNumber": 6,
-                "licensePlate": "1002",
+                "vehicleId": 26295,
+                "orderNumber": 4,
+                "licensePlate": "6303",
                 "directionId": 1
             },
             {
-                "timestamp": "2024-04-21 12:47:00",
+                "timestamp": "2024-04-21 14:18:18",
                 "position": {
-                    "lon": 30.29650885406443,
-                    "lat": 59.95055950386357
+                    "lon": 30.31035946128452,
+                    "lat": 59.96702179730528
                 },
-                "direction": 301,
+                "direction": 154,
                 "routeId": "1699",
-                "vehicleLabel": "6491",
-                "velocity": 15,
-                "vehicleId": 23307,
-                "orderNumber": 8,
-                "licensePlate": "Р929ОХ198",
+                "vehicleLabel": "6385",
+                "velocity": 9,
+                "vehicleId": 22919,
+                "orderNumber": 13,
+                "licensePlate": "Р129ВВ198",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:55",
+                "timestamp": "2024-04-21 14:18:21",
                 "position": {
-                    "lon": 30.304432587645522,
-                    "lat": 59.92183103609128
+                    "lon": 30.320341919493533,
+                    "lat": 59.986659895848014
                 },
-                "direction": 66,
-                "routeId": "6223",
-                "vehicleLabel": "3144",
-                "velocity": 3,
-                "vehicleId": 28588,
-                "orderNumber": 3,
-                "licensePlate": "3144",
-                "directionId": 0
+                "direction": 107,
+                "routeId": "226",
+                "vehicleLabel": "6963",
+                "velocity": 26,
+                "vehicleId": 1313,
+                "orderNumber": 12,
+                "licensePlate": "К951ЕМ198",
+                "directionId": 1
             },
             {
-                "timestamp": "2024-04-21 12:47:01",
+                "timestamp": "2024-04-21 14:18:20",
                 "position": {
-                    "lon": 30.30422509487878,
-                    "lat": 59.947867779725065
+                    "lon": 30.334027854789756,
+                    "lat": 59.98394490820747
                 },
-                "direction": 44,
-                "routeId": "1065",
-                "vehicleLabel": "3243",
-                "velocity": 25,
-                "vehicleId": 25920,
+                "direction": 55,
+                "routeId": "1548",
+                "vehicleLabel": "36898",
+                "velocity": 0,
+                "vehicleId": 23247,
                 "orderNumber": 2,
-                "licensePlate": "3243",
+                "licensePlate": "М505ОЕ198",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:42:44",
+                "timestamp": "2024-04-21 14:18:20",
                 "position": {
-                    "lon": 30.319242574343114,
-                    "lat": 59.92736647951266
+                    "lon": 30.321062960647208,
+                    "lat": 59.955829309551305
                 },
-                "direction": 50,
-                "routeId": "9169",
-                "vehicleLabel": "3102",
-                "velocity": 2,
-                "vehicleId": 31062,
+                "direction": 154,
+                "routeId": "1675",
+                "vehicleLabel": "10284",
+                "velocity": 8,
+                "vehicleId": 27239,
+                "orderNumber": 6,
+                "licensePlate": "Р818УТ198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:18",
+                "position": {
+                    "lon": 30.312617826525766,
+                    "lat": 59.95901524158357
+                },
+                "direction": 68,
+                "routeId": "1670",
+                "vehicleLabel": "35842",
+                "velocity": 14,
+                "vehicleId": 24310,
+                "orderNumber": 4,
+                "licensePlate": "М672СО198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.309114988190576,
+                    "lat": 59.96845980316926
+                },
+                "direction": 334,
+                "routeId": "1504",
+                "vehicleLabel": "3327",
+                "velocity": 29,
+                "vehicleId": 27158,
+                "orderNumber": 5,
+                "licensePlate": "Н556ОЕ198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:17:04",
+                "position": {
+                    "lon": 30.340750476749978,
+                    "lat": 59.98823621695098
+                },
+                "direction": 348,
+                "routeId": "1113",
+                "vehicleLabel": "3472",
+                "velocity": 28,
+                "vehicleId": 4353,
+                "orderNumber": 6,
+                "licensePlate": "3472",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:14",
+                "position": {
+                    "lon": 30.309850691562904,
+                    "lat": 59.96769764710181
+                },
+                "direction": 334,
+                "routeId": "1740",
+                "vehicleLabel": "1100",
+                "velocity": 21,
+                "vehicleId": 27326,
+                "orderNumber": 10,
+                "licensePlate": "В001СР178",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:12",
+                "position": {
+                    "lon": 30.341387922354542,
+                    "lat": 59.98492660916504
+                },
+                "direction": 78,
+                "routeId": "1087",
+                "vehicleLabel": "6439",
+                "velocity": 14,
+                "vehicleId": 26511,
                 "orderNumber": 3,
-                "licensePlate": "3102",
+                "licensePlate": "6439",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.306587445223315,
+                    "lat": 59.987704745314325
+                },
+                "direction": 58,
+                "routeId": "1117",
+                "vehicleLabel": "5503",
+                "velocity": 27,
+                "vehicleId": 30163,
+                "orderNumber": 6,
+                "licensePlate": "5503",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.314651576430983,
+                    "lat": 59.971561451444856
+                },
+                "direction": 199,
+                "routeId": "2133",
+                "vehicleLabel": "6434",
+                "velocity": 10,
+                "vehicleId": 22950,
+                "orderNumber": 3,
+                "licensePlate": "Р161НК198",
                 "directionId": 0
             },
             {
-                "timestamp": "2024-04-21 12:46:57",
+                "timestamp": "2024-04-21 14:18:06",
                 "position": {
-                    "lon": 30.310112245674116,
-                    "lat": 59.93467433381666
+                    "lon": 30.30988874991638,
+                    "lat": 59.968648411137785
                 },
-                "direction": 235,
+                "direction": 150,
+                "routeId": "1117",
+                "vehicleLabel": "5034",
+                "velocity": 25,
+                "vehicleId": 4423,
+                "orderNumber": 4,
+                "licensePlate": "5034",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:18",
+                "position": {
+                    "lon": 30.30869011186867,
+                    "lat": 59.98833382584689
+                },
+                "direction": 58,
+                "routeId": "1673",
+                "vehicleLabel": "35607",
+                "velocity": 17,
+                "vehicleId": 13864,
+                "orderNumber": 2,
+                "licensePlate": "М404НР198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.308940028655325,
+                    "lat": 59.96864098077841
+                },
+                "direction": 334,
+                "routeId": "305",
+                "vehicleLabel": "2679",
+                "velocity": 28,
+                "vehicleId": 26569,
+                "orderNumber": 6,
+                "licensePlate": "Н454КВ198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:18",
+                "position": {
+                    "lon": 30.3088476,
+                    "lat": 59.96764490000001
+                },
+                "direction": 90,
                 "routeId": "1669",
                 "vehicleLabel": "35626",
-                "velocity": 0,
+                "velocity": 9,
                 "vehicleId": 23435,
                 "orderNumber": 3,
                 "licensePlate": "М551НР198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:21",
+                "position": {
+                    "lon": 30.340967245955213,
+                    "lat": 59.96889733329567
+                },
+                "direction": 74,
+                "routeId": "7642",
+                "vehicleLabel": "35631",
+                "velocity": 21,
+                "vehicleId": 23440,
+                "orderNumber": 10,
+                "licensePlate": "М737НР198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:12",
+                "position": {
+                    "lon": 30.333298300481715,
+                    "lat": 59.98365557551973
+                },
+                "direction": 48,
+                "routeId": "1087",
+                "vehicleLabel": "5926",
+                "velocity": 4,
+                "vehicleId": 15550,
+                "orderNumber": 13,
+                "licensePlate": "5926",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.308392557180248,
+                    "lat": 59.961705337804766
+                },
+                "direction": 39,
+                "routeId": "1062",
+                "vehicleLabel": "5018",
+                "velocity": 20,
+                "vehicleId": 27320,
+                "orderNumber": 1,
+                "licensePlate": "5018",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:17",
+                "position": {
+                    "lon": 30.3332626,
+                    "lat": 59.98947579999999
+                },
+                "direction": 349,
+                "routeId": "332",
+                "vehicleLabel": "2209",
+                "velocity": 17,
+                "vehicleId": 18074,
+                "orderNumber": 10,
+                "licensePlate": "Е621ТС198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.314014247780406,
+                    "lat": 59.96788179196204
+                },
+                "direction": 193,
+                "routeId": "1600",
+                "vehicleLabel": "2282",
+                "velocity": 16,
+                "vehicleId": 30619,
+                "orderNumber": 2,
+                "licensePlate": "С458ТВ198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.3362297,
+                    "lat": 59.96822349999998
+                },
+                "direction": 71,
+                "routeId": "1117",
+                "vehicleLabel": "5501",
+                "velocity": 19,
+                "vehicleId": 30161,
+                "orderNumber": 7,
+                "licensePlate": "5501",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:17:17",
+                "position": {
+                    "lon": 30.314511921069094,
+                    "lat": 59.967743011431644
+                },
+                "direction": 283,
+                "routeId": "1117",
+                "vehicleLabel": "5130",
+                "velocity": 6,
+                "vehicleId": 11580,
+                "orderNumber": 2,
+                "licensePlate": "5130",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.318692362220027,
+                    "lat": 59.961861812847175
+                },
+                "direction": 250,
+                "routeId": "1670",
+                "vehicleLabel": "35625",
+                "velocity": 47,
+                "vehicleId": 23387,
+                "orderNumber": 3,
+                "licensePlate": "М605НР198",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:17:37",
+                "position": {
+                    "lon": 30.339495912165752,
+                    "lat": 59.98895102090837
+                },
+                "direction": 78,
+                "routeId": "1131",
+                "vehicleLabel": "3325",
+                "velocity": 7,
+                "vehicleId": 31403,
+                "orderNumber": 5,
+                "licensePlate": "3325",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:19",
+                "position": {
+                    "lon": 30.309084172361423,
+                    "lat": 59.98845754813981
+                },
+                "direction": 58,
+                "routeId": "232",
+                "vehicleLabel": "6531",
+                "velocity": 4,
+                "vehicleId": 30717,
+                "orderNumber": 5,
+                "licensePlate": "К083ОН198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:17",
+                "position": {
+                    "lon": 30.33718340866693,
+                    "lat": 59.98467018485237
+                },
+                "direction": 259,
+                "routeId": "7509",
+                "vehicleLabel": "38210",
+                "velocity": 13,
+                "vehicleId": 24110,
+                "orderNumber": 9,
+                "licensePlate": "Р468ОТ198",
+                "directionId": 0
+            },
+            {
+                "timestamp": "2024-04-21 14:18:20",
+                "position": {
+                    "lon": 30.329149453485552,
+                    "lat": 59.96232364206118
+                },
+                "direction": 333,
+                "routeId": "1122",
+                "vehicleLabel": "3003",
+                "velocity": 13,
+                "vehicleId": 3903,
+                "orderNumber": 5,
+                "licensePlate": "3003",
+                "directionId": 1
+            },
+            {
+                "timestamp": "2024-04-21 14:18:17",
+                "position": {
+                    "lon": 30.320765774884126,
+                    "lat": 59.97383568997813
+                },
+                "direction": 13,
+                "routeId": "1600",
+                "vehicleLabel": "2278",
+                "velocity": 26,
+                "vehicleId": 26533,
+                "orderNumber": 6,
+                "licensePlate": "Н589КВ198",
                 "directionId": 0
             }
         ],

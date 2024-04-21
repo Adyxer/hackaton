@@ -6,7 +6,7 @@ import json
 import folium
 import requests
 from geopy.geocoders import Nominatim
-import os
+
 
 class Ui_MainWindow:
 
@@ -23,11 +23,12 @@ class Ui_MainWindow:
         self.label_2.configure(background="#A0AECD")
 
         self.abit = ttk.Button(self.master)
+        self.abit.place(x=380, y=90, width=245, height=25)
         self.abit.configure(text="Абитуриентам")
         self.abit.configure(style="TButton")
 
         self.search = ttk.Button(self.master)
-        self.search.place(x=490, y=90, width=206, height=25)
+        self.search.place(x=680, y=90, width=206, height=30)
         self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
         self.search.configure(style="TButton")
 
@@ -137,11 +138,12 @@ class UI_Abit_Info:
         self.label_2.configure(background="#A0AECD")
 
         self.abit = ttk.Button(master)
+        self.abit.place(x=290, y=90, width=245, height=25)
         self.abit.configure(text="Абитуриентам", command=lambda: self.show_abit_info())
         self.abit.configure(style="TButton")
 
         self.search = ttk.Button(master)
-        self.search.place(x=490, y=90, width=246, height=25)
+        self.search.place(x=590, y=90, width=246, height=25)
         self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
         self.search.configure(style="TButton")
 
@@ -149,14 +151,16 @@ class UI_Abit_Info:
         self.label.place(x=-10, y=-50, width=161, height=181)
         self.img = PhotoImage(file="image/logo.png")
         self.label.configure(image=self.img)
+
         self.stud = ttk.Button(self.master)
         self.stud.place(x=30, y=90, width=246, height=25)
         self.stud.configure(text="Студентам")
         self.stud.configure(style="TButton")
+
         self.search_2 = ttk.Button(self.master)
         self.label_2.configure(background="#A0AECD")
         self.search_2.configure(text="Вход")
-        self.search_2.configure(style="BW.TLabel")
+        self.search_2.configure(style="TButton")
 
         self.search_3 = ttk.Button(self.master)
         self.search_3.configure(text="Регистрация")
@@ -197,20 +201,14 @@ class UI_Abit_Info:
         self.score3 = tk.Entry(master)
         self.score3.place(x=280, y=400)
 
-        self.specialties_txt = ttk.Label(master)
-        self.specialties_txt.configure(text='Выберите желаемые специальности (через запятую):', background='white')
-        self.specialties_txt.place(x=20, y=450)
-        self.specialties = tk.Entry(master)
-        self.specialties.place(x=280, y=450)
-
         self.calculate_btn = ttk.Button(master, text="Вычислить", command=self.calculate_score)
-        self.calculate_btn.place(x=150, y=500)
+        self.calculate_btn.place(x=150, y=450)
 
         self.total_score_label = ttk.Label(master, text="Сумма баллов:")
-        self.total_score_label.place(x=20, y=550)
+        self.total_score_label.place(x=20, y=500)
 
         self.total_score_value = ttk.Label(master, text="")
-        self.total_score_value.place(x=150, y=550)
+        self.total_score_value.place(x=150, y=500)
 
         self.available_specialties_label = ttk.Label(master, text="Возможные специальности:")
         self.available_specialties_label.place(x=520, y=150)
@@ -251,12 +249,11 @@ class UI_Abit_Info:
             self.find_specialties(subject1, subject2, subject3, total_score)
 
     def find_specialties(self, subject1, subject2, subject3, total_score):
-        desired_specialties = [s.strip() for s in self.specialties.get().split(",")]
         available_specialties = []
         with open('priem.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
             for item in data:
-                if total_score >= item["Балл"] and item["Направление"] in desired_specialties:
+                if total_score >= item["Балл"]:
                     subjects = [item["Предмет 1"], item["Предмет 2"], item["Предмет 3"]]
                     if self.match_subjects(subjects, [subject1, subject2, subject3]):
                         available_specialties.append(item["Направление"])
@@ -268,63 +265,6 @@ class UI_Abit_Info:
         else:
             self.available_specialties_value.delete('1.0', tk.END)
             self.available_specialties_value.insert(tk.END, "Нет специальностей подходящих под введённые данные")
-
-    def show_student_info(self):
-        self.root = tk.Toplevel(self.master)
-        self.ui = UI_Stud_Info(self.root)
-
-    def show_abit_info(self):
-        self.root = tk.Toplevel(self.master)
-        self.ui = UI_Abit_Info(self.root)
-
-    def match_subjects(self, subjects, chosen_subjects):
-        return set(subjects) == set(chosen_subjects)
-
-
-
-class UI_Stud_Info:
-
-    def __init__(self, master):
-        self.master = master
-        self.master.geometry("859x600")
-        self.master.configure(background="#FFFFFF")
-        self.master.title("StudHelp")
-        self.label_2 = tk.Label(master)
-        self.label_2.place(x=5, y=0, width=900, height=131)
-        self.label_2.configure(background="#A0AECD")
-
-        self.abit = ttk.Button(master)
-        self.abit.configure(text="Абитуриентам")
-        self.abit.configure(style="TButton")
-
-        self.search = ttk.Button(master)
-        self.search.place(x=490, y=90, width=246, height=25)
-        self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
-        self.search.configure(style="TButton")
-
-        self.label = tk.Label(self.master)
-        self.label.place(x=-10, y=-50, width=161, height=181)
-        self.img = PhotoImage(file="image/logo.png")
-        self.label.configure(image=self.img)
-        self.stud = ttk.Button(self.master)
-        self.stud.place(x=30, y=90, width=246, height=25)
-        self.stud.configure(text="Студентам")
-        self.stud.configure(style="TButton")
-        self.search_2 = ttk.Button(self.master)
-        self.label_2.configure(background="#A0AECD")
-        self.search_2.configure(text="Вход")
-        self.search_2.configure(style="BW.TLabel")
-
-        self.search_3 = ttk.Button(self.master)
-        self.search_3.configure(text="Регистрация")
-        self.search_3.configure(style="TButton")
-        self.subject1_txt = ttk.Label(master)
-        self.map_btn = ttk.Button(master, text="Показать карту", command=self.show_map)
-
-        self.open_in_edge_btn = ttk.Button(master, text="Открыть на карте", command=lambda: self.open_file('vehicles_map.html'))
-        self.open_in_edge_btn.place(relx=0.3, rely=0.3,width=400,height=400)
-
-
 
     def show_student_info(self):
         self.root = tk.Toplevel(self.master)
@@ -361,13 +301,53 @@ class UI_Stud_Info:
             popup = f"Line: {vehicle['Line']}, Brigade: {vehicle['Brigade']}"
             folium.Marker([lat, lon], popup=popup).add_to(map_osm)
         map_osm.save("map.html")
+        webbrowser.open("map.html")
 
-    def open_map_in_edge(self):
-        os.system("start microsoft-edge:vehicles_map.html")
 
-    def open_file(self,file_path):
-        os.startfile(file_path)
+class UI_Stud_Info:
 
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry("859x600")
+        self.master.configure(background="#FFFFFF")
+        self.master.title("StudHelp")
+        self.label_2 = tk.Label(master)
+        self.label_2.place(x=5, y=0, width=900, height=131)
+        self.label_2.configure(background="#A0AECD")
+
+        self.abit = ttk.Button(master)
+        self.abit.place(x=290, y=90, width=245, height=25)
+        self.abit.configure(text="Абитуриентам")
+        self.abit.configure(style="TButton")
+
+        self.search = ttk.Button(master)
+        self.search.place(x=590, y=90, width=246, height=25)
+        self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
+        self.search.configure(style="TButton")
+
+        self.label = tk.Label(self.master)
+        self.label.place(x=-10, y=-50, width=161, height=181)
+        self.img = PhotoImage(file="image/logo.png")
+        self.label.configure(image=self.img)
+        self.stud = ttk.Button(self.master)
+        self.stud.place(x=30, y=90, width=246, height=25)
+        self.stud.configure(text="Студентам")
+        self.stud.configure(style="TButton")
+        self.search_2 = ttk.Button(self.master)
+        self.label_2.configure(background="#A0AECD")
+        self.search_2.configure(text="Вход")
+        self.search_2.configure(style="BW.TLabel")
+
+        self.search_3 = ttk.Button(self.master)
+        self.search_3.configure(text="Регистрация")
+        self.search_3.configure(style="TButton")
+
+        def show_student_info(self):
+            print("")
+
+        def show_abit_info(self):
+            self.root = tk.Toplevel(self.master)
+            self.ui = UI_Abit_Info(self.root)
 
 
 def main():
