@@ -301,7 +301,7 @@ class UI_Abit_Info:
             popup = f"Line: {vehicle['Line']}, Brigade: {vehicle['Brigade']}"
             folium.Marker([lat, lon], popup=popup).add_to(map_osm)
         map_osm.save("map.html")
-        webbrowser.open("map.html")
+        os.startfile("map.html")
 
 
 class UI_Stud_Info:
