@@ -1,8 +1,12 @@
 import tkinter as tk
+import webbrowser
 from tkinter import ttk
 from tkinter import PhotoImage
 import json
-
+import folium
+import requests
+from geopy.geocoders import Nominatim
+import os
 
 class Ui_MainWindow:
 
@@ -19,13 +23,12 @@ class Ui_MainWindow:
         self.label_2.configure(background="#A0AECD")
 
         self.abit = ttk.Button(self.master)
-        self.abit.place(x=380, y=90, width=245, height=25)
         self.abit.configure(text="Абитуриентам")
         self.abit.configure(style="TButton")
 
         self.search = ttk.Button(self.master)
-        self.search.place(x=680, y=90, width=206, height=30)
-        self.search.configure(text="Поиск по ЕГЭ", command=self.show_abit_info())
+        self.search.place(x=490, y=90, width=206, height=25)
+        self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
         self.search.configure(style="TButton")
 
         self.label = tk.Label(self.master)
@@ -39,13 +42,11 @@ class Ui_MainWindow:
         self.stud.configure(style="TButton")
 
         self.search_2 = ttk.Button(self.master)
-        self.search_2.place(x=482, y=20, width=157, height=25)
         self.label_2.configure(background="#A0AECD")
         self.search_2.configure(text="Вход")
         self.search_2.configure(style="TButton")
 
         self.search_3 = ttk.Button(self.master)
-        self.search_3.place(x=636, y=20, width=156, height=25)
         self.search_3.configure(text="Регистрация")
         self.search_3.configure(style="TButton")
 
@@ -82,12 +83,15 @@ class Ui_MainWindow:
     def show_student_info(self):
         self.root = tk.Toplevel(self.master)
         self.ui = UI_Stud_Info(self.root)
+
     def show_specialties(self, group):
         self.root = tk.Toplevel(self.master)
         self.ui = SpecialtyInfo(self.root, group)
+
     def show_abit_info(self):
         self.root = tk.Toplevel(self.master)
         self.ui = UI_Abit_Info(self.root)
+
 
 class SpecialtyInfo:
     def __init__(self, master, group):
@@ -119,6 +123,8 @@ class SpecialtyInfo:
                     self.description_text.configure(state="normal")
                     self.description_text.insert("end", description)
                     self.description_text.configure(state="disabled")
+
+
 class UI_Abit_Info:
 
     def __init__(self, master):
@@ -131,33 +137,28 @@ class UI_Abit_Info:
         self.label_2.configure(background="#A0AECD")
 
         self.abit = ttk.Button(master)
-        self.abit.place(x=290, y=90, width=245, height=25)
         self.abit.configure(text="Абитуриентам", command=lambda: self.show_abit_info())
         self.abit.configure(style="TButton")
 
         self.search = ttk.Button(master)
-        self.search.place(x=590, y=90, width=246, height=25)
-        self.search.configure(text="Поиск по ЕГЭ",command=lambda: self.show_abit_info())
+        self.search.place(x=490, y=90, width=246, height=25)
+        self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
         self.search.configure(style="TButton")
 
         self.label = tk.Label(self.master)
         self.label.place(x=-10, y=-50, width=161, height=181)
         self.img = PhotoImage(file="image/logo.png")
         self.label.configure(image=self.img)
-
         self.stud = ttk.Button(self.master)
         self.stud.place(x=30, y=90, width=246, height=25)
         self.stud.configure(text="Студентам")
         self.stud.configure(style="TButton")
-
         self.search_2 = ttk.Button(self.master)
-        self.search_2.place(x=482, y=20, width=157, height=25, )
         self.label_2.configure(background="#A0AECD")
         self.search_2.configure(text="Вход")
-        self.search_2.configure(style="TButton")
+        self.search_2.configure(style="BW.TLabel")
 
         self.search_3 = ttk.Button(self.master)
-        self.search_3.place(x=636, y=20, width=156, height=25)
         self.search_3.configure(text="Регистрация")
         self.search_3.configure(style="TButton")
         self.subject1_txt = ttk.Label(master)
@@ -196,14 +197,20 @@ class UI_Abit_Info:
         self.score3 = tk.Entry(master)
         self.score3.place(x=280, y=400)
 
+        self.specialties_txt = ttk.Label(master)
+        self.specialties_txt.configure(text='Выберите желаемые специальности (через запятую):', background='white')
+        self.specialties_txt.place(x=20, y=450)
+        self.specialties = tk.Entry(master)
+        self.specialties.place(x=280, y=450)
+
         self.calculate_btn = ttk.Button(master, text="Вычислить", command=self.calculate_score)
-        self.calculate_btn.place(x=150, y=450)
+        self.calculate_btn.place(x=150, y=500)
 
         self.total_score_label = ttk.Label(master, text="Сумма баллов:")
-        self.total_score_label.place(x=20, y=500)
+        self.total_score_label.place(x=20, y=550)
 
         self.total_score_value = ttk.Label(master, text="")
-        self.total_score_value.place(x=150, y=500)
+        self.total_score_value.place(x=150, y=550)
 
         self.available_specialties_label = ttk.Label(master, text="Возможные специальности:")
         self.available_specialties_label.place(x=520, y=150)
@@ -244,11 +251,12 @@ class UI_Abit_Info:
             self.find_specialties(subject1, subject2, subject3, total_score)
 
     def find_specialties(self, subject1, subject2, subject3, total_score):
+        desired_specialties = [s.strip() for s in self.specialties.get().split(",")]
         available_specialties = []
         with open('priem.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
             for item in data:
-                if total_score >= item["Балл"]:
+                if total_score >= item["Балл"] and item["Направление"] in desired_specialties:
                     subjects = [item["Предмет 1"], item["Предмет 2"], item["Предмет 3"]]
                     if self.match_subjects(subjects, [subject1, subject2, subject3]):
                         available_specialties.append(item["Направление"])
@@ -259,7 +267,8 @@ class UI_Abit_Info:
                 self.available_specialties_value.insert(tk.END, specialty + '\n')
         else:
             self.available_specialties_value.delete('1.0', tk.END)
-            self.available_specialties_value.insert(tk.END, "No specialties available.")
+            self.available_specialties_value.insert(tk.END, "Нет специальностей подходящих под введённые данные")
+
     def show_student_info(self):
         self.root = tk.Toplevel(self.master)
         self.ui = UI_Stud_Info(self.root)
@@ -267,8 +276,12 @@ class UI_Abit_Info:
     def show_abit_info(self):
         self.root = tk.Toplevel(self.master)
         self.ui = UI_Abit_Info(self.root)
+
     def match_subjects(self, subjects, chosen_subjects):
         return set(subjects) == set(chosen_subjects)
+
+
+
 class UI_Stud_Info:
 
     def __init__(self, master):
@@ -281,47 +294,87 @@ class UI_Stud_Info:
         self.label_2.configure(background="#A0AECD")
 
         self.abit = ttk.Button(master)
-        self.abit.place(x=290, y=90, width=245, height=25)
         self.abit.configure(text="Абитуриентам")
         self.abit.configure(style="TButton")
 
         self.search = ttk.Button(master)
-        self.search.place(x=590, y=90, width=246, height=25)
-        self.search.configure(text="Поиск по ЕГЭ",command=lambda: self.show_abit_info())
+        self.search.place(x=490, y=90, width=246, height=25)
+        self.search.configure(text="Поиск по ЕГЭ", command=lambda: self.show_abit_info())
         self.search.configure(style="TButton")
 
         self.label = tk.Label(self.master)
         self.label.place(x=-10, y=-50, width=161, height=181)
         self.img = PhotoImage(file="image/logo.png")
         self.label.configure(image=self.img)
-
         self.stud = ttk.Button(self.master)
         self.stud.place(x=30, y=90, width=246, height=25)
         self.stud.configure(text="Студентам")
         self.stud.configure(style="TButton")
-
         self.search_2 = ttk.Button(self.master)
-        self.search_2.place(x=482, y=20, width=157, height=25)
         self.label_2.configure(background="#A0AECD")
         self.search_2.configure(text="Вход")
         self.search_2.configure(style="BW.TLabel")
 
         self.search_3 = ttk.Button(self.master)
-        self.search_3.place(x=636, y=20, width=156, height=25)
         self.search_3.configure(text="Регистрация")
         self.search_3.configure(style="TButton")
+        self.subject1_txt = ttk.Label(master)
+        self.map_btn = ttk.Button(master, text="Показать карту", command=self.show_map)
 
-        def show_student_info(self):
-            print("")
+        self.open_in_edge_btn = ttk.Button(master, text="Открыть на карте", command=lambda: self.open_file('vehicles_map.html'))
+        self.open_in_edge_btn.place(relx=0.3, rely=0.3,width=400,height=400)
 
-        def show_abit_info(self):
-            self.root = tk.Toplevel(self.master)
-            self.ui = UI_Abit_Info(self.root)
+
+
+    def show_student_info(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = UI_Stud_Info(self.root)
+
+    def show_abit_info(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = UI_Abit_Info(self.root)
+
+    def match_subjects(self, subjects, chosen_subjects):
+        return set(subjects) == set(chosen_subjects)
+
+    def show_map(self):
+        user_location = self.get_user_location()
+        vehicles_data = self.get_vehicles_near_user(user_location, radius=2000)
+        self.plot_vehicles_on_map(user_location, vehicles_data)
+
+    def get_user_location(self):
+        geolocator = Nominatim(user_agent="geoapiExercises")
+        location = geolocator.geocode("Saint Petersburg")
+        return location.latitude, location.longitude
+
+    def get_vehicles_near_user(self, user_location, radius=1000):
+        user_latitude, user_longitude = user_location
+        url = f"https://api.um.warszawa.pl/api/action/wsstore_get/?id=2c4f8e9b-7c7c-44f8-a825-bdf781254622&lat={user_latitude}&lng={user_longitude}&apikey=3647c929-5ef9-408e-a423-342a47499a36&dist={radius}"
+        response = requests.get(url)
+        return response.json()
+
+    def plot_vehicles_on_map(self, user_location, vehicles_data):
+        map_osm = folium.Map(location=user_location, zoom_start=15)
+        for vehicle in vehicles_data:
+            lat = vehicle['lat']
+            lon = vehicle['lon']
+            popup = f"Line: {vehicle['Line']}, Brigade: {vehicle['Brigade']}"
+            folium.Marker([lat, lon], popup=popup).add_to(map_osm)
+        map_osm.save("map.html")
+
+    def open_map_in_edge(self):
+        os.system("start microsoft-edge:vehicles_map.html")
+
+    def open_file(self,file_path):
+        os.startfile(file_path)
+
+
 
 def main():
     root = tk.Tk()
     ui = Ui_MainWindow(root)
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()

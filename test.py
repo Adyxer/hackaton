@@ -1,43 +1,48 @@
 import requests
 import json
 from datetime import datetime
+import math
 import folium
+from geopy.geocoders import Nominatim
+
+def calculate_distance(lat1, lon1, lat2, lon2):
+    R = 6371.0
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = math.radians(lat2)
+    lon2_rad = math.radians(lon2)
+    dlon = lon2_rad - lon1_rad
+    dlat = lat2_rad - lat1_rad
+    a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distance = R * c
+    return distance
 
 def get_user_location():
     try:
-        response = requests.get('https://ipinfo.io')
-        data = response.json()
-        location = data['loc'].split(',')
-        latitude = location[0]
-        longitude = location[1]
+        geolocator = Nominatim(user_agent="user_location")
+        location = geolocator.geocode("СПбГЭТУ")
+        latitude = location.latitude
+        longitude = location.longitude
         return f"{latitude},{longitude}"
     except Exception as e:
-        print("Error:", e)
+        print("Ошибка при получении местоположения пользователя:", e)
         return None
 
-def get_vehicles_near_user():
-    user_location = get_user_location()
+def get_vehicles_near_user(user_location, radius_km=1):
     if user_location:
         try:
-            latitude, longitude = user_location.split(',')
-            latitude = float(latitude)
-            longitude = float(longitude)
-            # Радиус в градусах, соответствующий примерно 2 км
-            radius = 0.018
-            # Рассчитываем координаты квадрата вокруг пользователя
-            north = latitude + radius
-            south = latitude - radius
-            east = longitude + radius
-            west = longitude - radius
-            # Формируем URL для запроса
-            url = f"https://spb-transport.gate.petersburg.ru/api/vehicles/{west},{north},{east},{south}"
+            latitude, longitude = [float(x) for x in user_location.split(',')]
+            radius = radius_km / 111
+            url = f"https://spb-transport.gate.petersburg.ru/api/vehicles/{longitude - radius},{latitude - radius},{longitude + radius},{latitude + radius}"
             response = requests.get(url)
             data = response.json()
             return user_location, data
         except Exception as e:
-            print("Error:", e)
-            return None
+            print("Ошибка при получении данных о транспорте:", e)
+            return None, None
     else:
+        print("Не удалось получить местоположение пользователя.")
         return None, None
 
 def parse_date(timestamp):
@@ -45,75 +50,74 @@ def parse_date(timestamp):
         dt_object = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
         return dt_object.strftime("%Y-%m-%d %H:%M:%S")
     except Exception as e:
-        print("Error:", e)
+        print("Ошибка при разборе даты:", e)
         return None
 
 def save_data_to_json(filename, user_location, data):
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump({'user_location': user_location, 'vehicles': data}, f, ensure_ascii=False, indent=4)
-        print("Data saved to", filename)
+        print("Данные сохранены в", filename)
     except Exception as e:
-        print("Error:", e)
+        print("Ошибка при сохранении данных в JSON:", e)
 
-user_location, vehicles_data = get_vehicles_near_user()
+def get_university_location():
+    try:
+        geolocator = Nominatim(user_agent="university_location")
+        location = geolocator.geocode("СПбГЭТУ")
+        latitude = location.latitude
+        longitude = location.longitude
+        return f"{latitude},{longitude}"
+    except Exception as e:
+        print("Ошибка при получении местоположения университета:", e)
+        return None
+
+user_location = get_user_location()
+university_location = get_university_location()
+user_location, vehicles_data = get_vehicles_near_user(user_location)
 if user_location and vehicles_data:
     save_data_to_json('vehicles_data.json', user_location, vehicles_data)
+else:
+    print("Не удалось получить местоположение пользователя и данные о транспорте.")
 
-# Load the JSON data from the file
-with open('vehicles_data.json', 'r') as file:
-    data = json.load(file)
+try:
+    with open('vehicles_data.json', 'r') as file:
+        data = json.load(file)
+except Exception as e:
+    print("Ошибка при загрузке данных из JSON:", e)
+    exit()
 
-# Extract user location
-user_location = data['user_location']
-print("User Location:", user_location)
+user_location = data.get('user_location')
+if not user_location:
+    print("Местоположение пользователя не найдено в данных JSON.")
+    exit()
+
+print("Местоположение пользователя:", user_location)
 print()
 
-# Print vehicle information within 2 km radius of user location
-vehicles = data['vehicles']['result']
-for vehicle in vehicles:
-    lon = vehicle['position']['lon']
-    lat = vehicle['position']['lat']
-    distance = vincenty((float(user_location.split(',')[0]), float(user_location.split(',')[1])), (lat, lon)).kilometers
-    if distance <= 2:
-        timestamp = vehicle['timestamp']
-        lon = vehicle['position']['lon']
-        lat = vehicle['position']['lat']
-        direction = vehicle['direction']
-        route_id = vehicle['routeId']
-        vehicle_label = vehicle['vehicleLabel']
-        velocity = vehicle['velocity']
-        vehicle_id = vehicle['vehicleId']
-        order_number = vehicle['orderNumber']
-        license_plate = vehicle['licensePlate']
-        direction_id = vehicle['directionId']
-
-        print("Timestamp:", timestamp)
-        print("Vehicle ID:", vehicle_id)
-        print("Vehicle Label:", vehicle_label)
-        print("Route ID:", route_id)
-        print("Order Number:", order_number)
-        print("License Plate:", license_plate)
-        print("Velocity:", velocity)
-        print("Direction:", direction)
-        print("Direction ID:", direction_id)
-        print("Longitude:", lon)
-        print("Latitude:", lat)
-        print("-" * 50)
-
-# Create map centered around user location
 map_center = [float(x) for x in user_location.split(',')]
 mymap = folium.Map(location=map_center, zoom_start=13)
 
-# Extract vehicle information and plot on map
+vehicles = data.get('vehicles', {}).get('result', [])
 for vehicle in vehicles:
-    lon = vehicle['position']['lon']
-    lat = vehicle['position']['lat']
-    vehicle_label = vehicle['vehicleLabel']
-    distance = vincenty((float(user_location.split(',')[0]), float(user_location.split(',')[1])), (lat, lon)).kilometers
-    if distance <= 2:
-        popup_text = f"Vehicle ID: {vehicle_label}<br>Latitude: {lat}<br>Longitude: {lon}"
+    lon = vehicle.get('position', {}).get('lon')
+    lat = vehicle.get('position', {}).get('lat')
+    if lon is None or lat is None:
+        continue
+    distance = calculate_distance(float(user_location.split(',')[0]), float(user_location.split(',')[1]), lat, lon)
+    if distance <= 1:
+        vehicle_label = vehicle.get('vehicleLabel')
+        if not vehicle_label:
+            continue
+        popup_text = f"ID транспорта: {vehicle_label}<br>Широта: {lat}<br>Долгота: {lon}"
         folium.Marker(location=[lat, lon], popup=popup_text).add_to(mymap)
 
-# Save the map
-mymap.save("vehicles_map.html")
+if university_location:
+    university_lat, university_lon = [float(x) for x in university_location.split(',')]
+    folium.Marker(location=[university_lat, university_lon], popup="СПбГЭТУ").add_to(mymap)
+
+try:
+    mymap.save("vehicles_map.html")
+    print("Карта сохранена в vehicles_map.html")
+except Exception as e:
+    print("Ошибка при сохранении карты:", e)
