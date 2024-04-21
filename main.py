@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 import webbrowser
 from tkinter import ttk
@@ -301,7 +302,7 @@ class UI_Abit_Info:
             popup = f"Line: {vehicle['Line']}, Brigade: {vehicle['Brigade']}"
             folium.Marker([lat, lon], popup=popup).add_to(map_osm)
         map_osm.save("map.html")
-        os.startfile("map.html")
+        os.startfile("vehicle-map.html")
 
 
 class UI_Stud_Info:
