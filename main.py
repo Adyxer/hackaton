@@ -3,6 +3,8 @@ from tkinter import ttk, messagebox
 from tkinter import PhotoImage
 import json
 import sqlite3
+from passlib.hash import pbkdf2_sha256
+
 
 class Ui_MainWindow:
 
@@ -38,40 +40,45 @@ class Ui_MainWindow:
         self.stud.configure(text="Студентам", command=self.show_student_info)
         self.stud.configure(style="BW.TLabel")
 
-        self.search_2 = ttk.Button(self.master)
-        self.search_2.place(x=482, y=20, width=157, height=25, )
-        self.label_2.configure(background="#A0AECD")
-        self.search_2.configure(text="Вход")
-        self.search_2.configure(style="BW.TLabel")
+        self.login_button = ttk.Button(self.master)
+        self.login_button.place(x=482, y=20, width=157, height=25)
+        self.login_button.configure(text="Вход", command=self.show_login)
+        self.login_button.configure(style="BW.TLabel")
 
-        self.search_3 = ttk.Button(self.master)
-        self.search_3.place(x=636, y=20, width=156, height=25)
-        self.search_3.configure(text="Регистрация")
-        self.search_3.configure(style="BW.TLabel")
+        self.register_button = ttk.Button(self.master)
+        self.register_button.place(x=636, y=20, width=156, height=25)
+        self.register_button.configure(text="Регистрация", command=self.show_register)
+        self.register_button.configure(style="BW.TLabel")
 
         self.pushButton = ttk.Button(self.master)
         self.pushButton.place(x=5, y=150, width=271, height=181)
-        self.pushButton.configure(text="Электроника и наноэлектроника", style="TButton", command=lambda: self.show_specialties("Электроника и наноэлектроника"))
+        self.pushButton.configure(text="Электроника и наноэлектроника", style="TButton",
+                                  command=lambda: self.show_specialties("Электроника и наноэлектроника"))
 
         self.pushButton_2 = ttk.Button(self.master)
         self.pushButton_2.place(x=290, y=150, width=271, height=181)
-        self.pushButton_2.configure(text="Радиоэлектронные системы и комплексы", style="TButton", command=lambda: self.show_specialties("Радиоэлектронные системы и комплексы"))
+        self.pushButton_2.configure(text="Радиоэлектронные системы и комплексы", style="TButton",
+                                    command=lambda: self.show_specialties("Радиоэлектронные системы и комплексы"))
 
         self.pushButton_4 = ttk.Button(self.master)
         self.pushButton_4.place(x=580, y=150, width=287, height=181)
-        self.pushButton_4.configure(text="Информационные системы и технологии", style="TButton", command=lambda: self.show_specialties("Информационные системы и технологии"))
+        self.pushButton_4.configure(text="Информационные системы и технологии", style="TButton",
+                                    command=lambda: self.show_specialties("Информационные системы и технологии"))
 
         self.pushButton_3 = ttk.Button(self.master)
         self.pushButton_3.place(x=290, y=360, width=271, height=181)
-        self.pushButton_3.configure(text="Компьютерная безопасность", style="TButton", command=lambda: self.show_specialties("Компьютерная безопасность"))
+        self.pushButton_3.configure(text="Компьютерная безопасность", style="TButton",
+                                    command=lambda: self.show_specialties("Компьютерная безопасность"))
 
         self.pushButton_5 = ttk.Button(self.master)
         self.pushButton_5.place(x=580, y=360, width=287, height=181)
-        self.pushButton_5.configure(text="Инноватика", style="TButton", command=lambda: self.show_specialties("Инноватика"))
+        self.pushButton_5.configure(text="Инноватика", style="TButton",
+                                    command=lambda: self.show_specialties("Инноватика"))
 
         self.pushButton_6 = ttk.Button(self.master)
         self.pushButton_6.place(x=5, y=360, width=287, height=181)
-        self.pushButton_6.configure(text="Реклама и связи с общественностью", style="TButton", command=lambda: self.show_specialties("Реклама и связи с общественностью"))
+        self.pushButton_6.configure(text="Реклама и связи с общественностью", style="TButton",
+                                    command=lambda: self.show_specialties("Реклама и связи с общественностью"))
 
     def show_student_info(self):
         print("Information for Students")
@@ -83,6 +90,14 @@ class Ui_MainWindow:
     def show_specialties(self, group):
         self.root = tk.Toplevel(self.master)
         self.ui = SpecialtyInfo(self.root, group)
+
+    def show_login(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = Login(self.root)
+
+    def show_register(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = Register(self.root)
 
 
 class SpecialtyInfo:
@@ -146,63 +161,138 @@ class UI_Abit_Info:
         self.stud.configure(text="Студентам")
         self.stud.configure(style="TButton")
 
-        self.search_2 = ttk.Button(self.master)
-        self.search_2.place(x=482, y=20, width=157, height=25, )
-        self.label_2.configure(background="#A0AECD")
-        self.search_2.configure(text="Вход")
-        self.search_2.configure(style="BW.TLabel")
+        self.login_button = ttk.Button(self.master)
+        self.login_button.place(x=482, y=20, width=157, height=25)
+        self.login_button.configure(text="Вход", command=self.show_login)
+        self.login_button.configure(style="BW.TLabel")
 
-        self.search_3 = ttk.Button(self.master)
-        self.search_3.place(x=636, y=20, width=156, height=25)
-        self.search_3.configure(text="Регистрация")
-        self.search_3.configure(style="TButton")
-        self.score1_txt = ttk.Label(master)
-        self.score1_txt.configure(text='Enter your score on first subject:', background='white')
-        self.score1_txt.place(x=20, y=200)
-        self.score1 = tk.Entry(master)
-        self.score1.place(x=280, y=200)
-        self.score2_txt = ttk.Label(master)
-        self.score2_txt.configure(text='Enter your score on the second subject:', background='white')
-        self.score2_txt.place(x=20, y=300)
-        self.score2 = tk.Entry(master)
-        self.score2.place(x=280, y=300)
-        self.score3.configure(text='Enter your score on the third subject:', background='white')
-        self.score3.place(x=20, y=300)
-        self.score3_txt = tk.Entry(master)
-        self.score3_txt.place(x=280, y=300)
-        def get_name():
-            return self.name.get()
+        self.register_button = ttk.Button(self.master)
+        self.register_button.place(x=636, y=20, width=156, height=25)
+        self.register_button.configure(text="Регистрация", command=self.show_register)
+        self.register_button.configure(style="BW.TLabel")
 
-import json
-def calculate_score(score1,score2,score3):
-    if score1 > 100 or score2 > 100 or score3 > 100:
-            print("Incorrect data! Try again!\n")
-    else:
-        return score1+score2+score3
+    def show_login(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = Login(self.root)
 
-def show_abit_info():
-    root = tk.Toplevel()
-    ui = UI_Abit_Info(root)
-    root.mainloop()
+    def show_register(self):
+        self.root = tk.Toplevel(self.master)
+        self.ui = Register(self.root)
+
+
+class Login:
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry("400x300")
+        self.master.configure(background="#FFFFFF")
+        self.master.title("Login")
+
+        self.label = tk.Label(self.master)
+        self.label.place(x=10, y=10, width=150, height=25)
+        self.label.configure(text="Username:")
+        self.label.configure(anchor="w")
+
+        self.username_entry = ttk.Entry(self.master)
+        self.username_entry.place(x=170, y=10, width=200, height=25)
+
+        self.label_2 = tk.Label(self.master)
+        self.label_2.place(x=10, y=50, width=150, height=25)
+        self.label_2.configure(text="Password:")
+        self.label_2.configure(anchor="w")
+
+        self.password_entry = ttk.Entry(self.master, show="*")
+        self.password_entry.place(x=170, y=50, width=200, height=25)
+
+        self.login_button = ttk.Button(self.master)
+        self.login_button.place(x=150, y=100, width=100, height=30)
+        self.login_button.configure(text="Login", command=self.login)
+
+        self.master.bind("<Return>", self.login)
+
+    def login(self, event=None):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        conn = sqlite3.connect("users.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            if pbkdf2_sha256.verify(password, user[2]):
+                messagebox.showinfo("Success", f"Logged in as {username}")
+            else:
+                messagebox.showerror("Error", "Invalid username or password!")
+        else:
+            messagebox.showerror("Error", "Invalid username or password!")
+        self.master.destroy()
+
+
+class Register:
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry("400x300")
+        self.master.configure(background="#FFFFFF")
+        self.master.title("Register")
+
+        self.label = tk.Label(self.master)
+        self.label.place(x=10, y=10, width=150, height=25)
+        self.label.configure(text="Username:")
+        self.label.configure(anchor="w")
+
+        self.username_entry = ttk.Entry(self.master)
+        self.username_entry.place(x=170, y=10, width=200, height=25)
+
+        self.label_2 = tk.Label(self.master)
+        self.label_2.place(x=10, y=50, width=150, height=25)
+        self.label_2.configure(text="Password:")
+        self.label_2.configure(anchor="w")
+
+        self.password_entry = ttk.Entry(self.master, show="*")
+        self.password_entry.place(x=170, y=50, width=200, height=25)
+
+        self.label_3 = tk.Label(self.master)
+        self.label_3.place(x=10, y=90, width=150, height=25)
+        self.label_3.configure(text="Confirm Password:")
+        self.label_3.configure(anchor="w")
+
+        self.confirm_password_entry = ttk.Entry(self.master, show="*")
+        self.confirm_password_entry.place(x=170, y=90, width=200, height=25)
+
+        self.register_button = ttk.Button(self.master)
+        self.register_button.place(x=150, y=140, width=100, height=30)
+        self.register_button.configure(text="Register", command=self.register)
+
+        self.master.bind("<Return>", self.register)
+
+    def register(self, event=None):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        confirm_password = self.confirm_password_entry.get()
+        if password == confirm_password:
+            hashed_password = pbkdf2_sha256.hash(password)
+            conn = sqlite3.connect("users.db")
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+            conn.commit()
+            conn.close()
+            messagebox.showinfo("Success", "User registered successfully!")
+            self.master.destroy()
+        else:
+            messagebox.showerror("Error", "Passwords do not match!")
 
 
 def main():
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users
+                      (id INTEGER PRIMARY KEY, 
+                      username TEXT, 
+                      password TEXT)''')
+    conn.commit()
+    conn.close()
+
     root = tk.Tk()
     ui = Ui_MainWindow(root)
-    file1 = open('priem.json', 'r', encoding='utf-8')
-    json_data = file1.read()
-    data = json.loads(json_data)
-    dest = []
-    p_b = []
-    k_g = []
-    p_k = []
-    price = []
-    min_score = 50
-    score = []
-    subjects = []
-    konk_b = []
-    konk_k = []
-    print(data)
     root.mainloop()
 
 
